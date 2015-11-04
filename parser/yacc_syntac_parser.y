@@ -1,0 +1,59 @@
+%{
+#include<ctype.h>
+#include<stdio.h>
+int yylex();
+int yyerror(char *s);
+int yylineno;
+%}
+
+%start program
+%left '+' '-'
+%left '*' '/'
+%nonassoc UMINUS
+%token BEGI THEN IF WHILE DO END NUM NE LE GE EQ ID DECL ENTER
+%%
+program:    BEGI stmts END {printf("success!\n");}
+            ;
+
+stmts:      stmts stmt{}
+            | {}
+            ;
+
+stmt:       ID DECL expr ';'{}
+    	    |expr ';'{}
+	    ;
+
+expr:       expr '+' term {}
+            |expr '-' term {}
+            |term {}
+            ;
+
+term:       term '*' factor {}
+            |term '/' factor {}
+            |factor {}
+            ;
+
+factor:     ID {}
+            |NUM {} 
+            |'(' expr ')' {}
+            ;
+    
+%%
+
+int main()
+{
+    yyparse();
+    return 0;
+}
+
+int yyerror(char *s)
+{
+    printf("line %d :",yylineno);
+    printf(" %s\n",s);
+    return 1;  
+}
+
+
+
+
+
