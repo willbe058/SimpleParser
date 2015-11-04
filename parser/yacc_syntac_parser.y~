@@ -12,7 +12,7 @@ int yylineno;
 %nonassoc UMINUS
 %token BEGI THEN IF WHILE DO END NUM NE LE GE EQ ID DECL ENTER
 %%
-program:    BEGI stmts END'#' {printf("success!\n");}
+program:    BEGI stmts END {printf("success!\n");}
             ;
 
 stmts:      stmts stmt{}

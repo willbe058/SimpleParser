@@ -508,7 +508,7 @@ char *yytext;
 #include<string.h>
 #include<stdlib.h>
 #include "y.tab.h"
-//extern char *yytext;
+extern char *yytext;
 //extern FILE *yyin;
 int lineno=1;
 #line 515 "lex.yy.c"
@@ -1930,7 +1930,15 @@ void yyfree (void * ptr )
 #line 74 "lex_with_yacc.l"
 
 
-int yywrap(){return 1;}
+int yywrap()
+{
+  //if(*yytext == '#')
+ //{
+    return 1;
+ //}else{
+   //return 0;
+ //}
+}
 
 /** int main(void){
 	char infilename[400];
