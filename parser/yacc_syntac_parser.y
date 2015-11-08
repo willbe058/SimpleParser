@@ -9,7 +9,7 @@ int yylineno;
 %start program
 %left '+' '-'
 %left '*' '/'
-%nonassoc UMINUS
+//%nonassoc UMINUS
 %token BEGI THEN IF WHILE DO END NUM NE LE GE EQ ID DECL ENTER
 %%
 program:    BEGI stmts END'#' {printf("success!\n");}

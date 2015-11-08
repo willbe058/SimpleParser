@@ -74,12 +74,7 @@ enter	[\n]+
 %%
 int yywrap()
 {
-  //if(*yytext == '#')
- //{
     return 1;
- //}else{
-   //return 0;
- //}
 }
 
 /** int main(void){

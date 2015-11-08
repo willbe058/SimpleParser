@@ -1898,8 +1898,11 @@ int main(void){
 	scanf("%s",&infilename);
 	yyin=fopen(infilename,"r");
 	printf("start analyse....\n");
-	if(!yyin){
-	return 0;}
+	
+	if(!yyin)
+	{
+	   return 0;
+	}
 	yylex();
 	fclose(yyin);
 
